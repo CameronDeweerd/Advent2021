@@ -112,8 +112,8 @@ def part2(puzzle_data):
 def solve(puzzle_input):
     """Solve the puzzle for the given input"""
     data = parse_input(puzzle_input)
-    solution1 = part1(data)
-    solution2 = part2(data)
+    solution1 = part1(parse_input(puzzle_input))
+    solution2 = part2(parse_input(puzzle_input))
     return data, solution1, solution2
 
 
