@@ -2,7 +2,7 @@ import pathlib
 import sys
 
 
-def parse(puzzle_input):
+def parse_input(puzzle_input):
     '''take the puzzle input data and convert it into usable data'''
 
 
@@ -16,16 +16,15 @@ def part2(puzzle_data):
 
 def solve(puzzle_input):
     """Solve the puzzle for the given input"""
-    data = parse(puzzle_input)
+    data = parse_input(puzzle_input)
     solution1 = part1(data)
     solution2 = part2(data)
     return data, solution1, solution2
 
 
 if __name__ == '__main__':
-    for path in sys.argv[1:]:
-        print(f"\n{path}:")
-        puzzle_input = pathlib.Path(path).read_text().strip()
-        data, solution1, solution2 = solve(puzzle_input)
-        print(solution1)
-        print(solution2)
+    PUZZLE_DIR = pathlib.Path(__file__).parent
+    puzzle_input = (PUZZLE_DIR / "input.txt").read_text().strip()
+    data, solution1, solution2 = solve(puzzle_input)
+    print(solution1)
+    print(solution2)

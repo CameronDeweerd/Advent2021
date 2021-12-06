@@ -7,11 +7,20 @@
 
 ## Day 2
 
+Dont forget to link your test file with your script
+
 ## Day 3
+
+Don't try to fit everything in one function. its easier and more readable if you split it up more
 
 ## Day 4
 
+Be very careful with your data references. Its important you know when you are creating a new copy of something vs when
+you are making a new pointer to something
+
 ## Day 5
+
+Parse module is really useful for preping the data into a useful form
 
 ## Day 6
 
