@@ -16,8 +16,8 @@ def parse_input(puzzle_input):
 def part1(puzzle_data):
     """solve part 1 and return answer"""
     count = 0
-    for line in puzzle_data:
-        for sequence in line[1]:
+    for _, output in puzzle_data:
+        for sequence in output:
             if len(sequence) in (2, 3, 4, 7):
                 count += 1
     return count
@@ -25,16 +25,16 @@ def part1(puzzle_data):
 
 def part2(puzzle_data):
     """solve part 2 and return answer"""
-    sum = 0
-    for line in puzzle_data:
-        location_dict = generate_location_dict(line[0])
-        for count, sequence in enumerate(line[1]):
+    output_sum = 0
+    for digits, output in puzzle_data:
+        location_dict = generate_location_dict(digits)
+        for count, sequence in enumerate(output):
             chars = []
             for letter in sequence:
                 chars.append(location_dict[letter])
-            sum += pow(10, (3 - count)) * select_num(chars)
+            output_sum += pow(10, (3 - count)) * select_num(chars)
 
-    return sum
+    return output_sum
 
 
 def select_num(chars):
@@ -63,10 +63,7 @@ def select_num(chars):
         return 5
 
     # return 2 and 3
-    if 'bR' in chars:
-        return 3
-    else:
-        return 2
+    return 3 if 'bR' in chars else 2
 
 
 def generate_location_dict(line):
@@ -125,7 +122,7 @@ def generate_location_dict(line):
     # find symbols that make up number 8 and get U
     for sequence in line:
         if len(sequence) == 7:
-            for spot in ('U', "uL", "uR", "uM", "bL", 'bR'):
+            for spot in ('U', "uL", "uR", "M", "bL", 'bR'):
                 sequence = sequence.replace(get_key(location_dict, spot), "")
             location_dict[sequence] = "B"
 

@@ -51,13 +51,12 @@ def test_part1_example1(example1):
     assert aoc.part1(example1) == 26
 
 
-@pytest.mark.skip(reason="Not implemented")
-def test_part2_solution(example1):
+def test_part2_solution1(example1):
     """Test part 2 on example input"""
     assert aoc.part2(example1) == 61229
 
 
-def test_part2_solution(example2):
+def test_part2_solution2(example2):
     """Test part 2 on example input"""
     assert aoc.part2(example2) == 5353
 
@@ -76,7 +75,7 @@ def test_select_num():
 
 def test_part2_dict_generator(example2):
     """Test part 2 on example input"""
-    assert aoc.generate_location_dict(example2[0]) == {
+    assert aoc.generate_location_dict(example2[0][0]) == {
         'a': 'uR',
         'b': 'bR',
         'c': 'B',

@@ -12,8 +12,6 @@ def parse_input(puzzle_input):
     for fish in fish_list:
         if fish in fish_dictionary:
             fish_dictionary[fish] += 1
-        else:
-            fish_dictionary[fish] = 1
 
     return fish_dictionary
 
