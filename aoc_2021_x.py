@@ -1,5 +1,6 @@
 import pathlib
 import sys
+import time
 
 
 def parse_input(puzzle_input):
@@ -23,8 +24,10 @@ def solve(puzzle_input):
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     PUZZLE_DIR = pathlib.Path(__file__).parent
     puzzle_input = (PUZZLE_DIR / "input.txt").read_text().strip()
     data, solution1, solution2 = solve(puzzle_input)
     print(solution1)
     print(solution2)
+    print("Execution took", (time.time() - start_time) * 1000, "ms to run")
