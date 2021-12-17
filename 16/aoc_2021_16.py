@@ -6,16 +6,13 @@ from math import prod
 def parse_input(puzzle_input):
     '''take the puzzle input data and convert it into usable data'''
     bin_list = list(map(lambda x: bin(int(x, 16))[2:].zfill(4), puzzle_input.strip()))
-    bin_string = ""
-    for bin_code in bin_list:
-        bin_string += bin_code
-    return bin_string
+    return ''.join(bin_list)
 
 
 class Packet:
-    def __init__(self):
-        self.version = None
-        self.typeID = None
+    def __init__(self, version=None, typeID=None):
+        self.version = version
+        self.typeID = typeID
         self.contents = None
 
 
@@ -27,9 +24,7 @@ def part1(puzzle_data):
 
 
 def translate_packet(packet_binary_data):
-    new_packet = Packet()
-    new_packet.version = int(packet_binary_data[0:3], 2)
-    new_packet.typeID = int(packet_binary_data[3:6], 2)
+    new_packet = Packet(int(packet_binary_data[0:3], 2), int(packet_binary_data[3:6], 2))
     packet_binary_data = packet_binary_data[6:]
 
     # if is a "literal value" packet
@@ -125,10 +120,7 @@ def process_packet(packet):
 
 
 def open_nested_packets(packet):
-    nums = []
-    for x in packet.contents:
-        nums.append(process_packet(x))
-    return nums
+    return list(map(lambda y: process_packet(y), packet.contents))
 
 
 def solve(puzzle_input):
